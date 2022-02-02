@@ -45,7 +45,7 @@ example configuration:
 for a portable cgo-enabled go installation
 
 
-cmd/exec is a proxy command runner for apps like vs code
+cmd/loki is a proxy command runner for apps like vs code
 
 example loki.json
 ```json
