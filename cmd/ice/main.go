@@ -47,7 +47,7 @@ func main() {
 		environ.Passthrough = append(environ.Passthrough,
 			"PROCESSOR_ARCHITECTURE", "PROCESSOR_IDENTIFIER",
 			"PSModulePath", "PATHEXT", "OS", "DriverData", "NUMBER_OF_PROCESSORS", "USERNAME",
-			"APPDATA", "PROGRAMFILES", "ProgramFiles(x86)", "ProgramData")
+			"APPDATA", "PROGRAMFILES", "ProgramFiles(x86)", "ProgramData", "LOCALAPPDATA", "TMP", "TEMP")
 	} else if devenv.OS == "linux" {
 		environ.Passthrough = append(environ.Passthrough,
 			"DISPLAY", "WAYLAND_DISPLAY", "LANG", "HOME", "XDG_RUNTIME_DIR",
