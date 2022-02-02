@@ -47,7 +47,7 @@ for a portable cgo-enabled go installation
 
 cmd/exec is a proxy command runner for apps like vs code
 
-example exetab
+example loki.json
 ```json
 {
     "code": "VSCode/Code"
