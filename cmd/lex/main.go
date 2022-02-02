@@ -13,7 +13,7 @@ var exetab map[string]string
 func main() {
 	ex, _ := os.Executable()
 	exPath := filepath.Dir(ex)
-	jsf, err := os.Open(path.Join(exPath, "exetab.json"))
+	jsf, err := os.Open(path.Join(exPath, "lex.json"))
 	if err != nil {
 		panic(err)
 	}
@@ -25,8 +25,8 @@ func main() {
 		cmd = exec.Command(path.Join(exPath, exe), os.Args[2:]...)
 	}
 	if cmd != nil {
-		cmd.Stdout = os.NewFile(0, os.DevNull)
-		cmd.Stderr = os.NewFile(0, os.DevNull)
+		cmd.Stdout, _ = os.OpenFile(os.DevNull, os.O_WRONLY, 0755)
+		cmd.Stderr, _ = os.OpenFile(os.DevNull, os.O_WRONLY, 0755)
 		cmd.Start()
 	}
 }
