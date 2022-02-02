@@ -55,9 +55,8 @@ func main() {
 			"TERM", "XAUTHORITY", "DESKTOP_SESSION", "HISTCONTROL", "COLORTERM",
 			"DBUS_SESSION_BUS_ADDRESS")
 	}
-	//do our replacements
-	//$PWD
 
+	//do our replacements
 	for i, v := range environ.Environ {
 		environ.Environ[i].Value = devenv.Replace(v.Value)
 	}
