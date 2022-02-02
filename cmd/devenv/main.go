@@ -65,7 +65,8 @@ func main() {
 		environ.Passthrough = append(environ.Passthrough,
 			"DISPLAY", "WAYLAND_DISPLAY", "LANG", "HOME", "XDG_RUNTIME_DIR",
 			"XDG_SESSION_TYPE", "XDG_SESSION_DESKTOP", "USER", "SHELL", "SESSION_MANAGER",
-			"TERM", "XAUTHORITY", "DESKTOP_SESSION", "HISTCONTROL", "COLORTERM")
+			"TERM", "XAUTHORITY", "DESKTOP_SESSION", "HISTCONTROL", "COLORTERM",
+			"DBUS_SESSION_BUS_ADDRESS")
 	}
 	//do our replacements
 	//$PWD
