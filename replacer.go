@@ -38,6 +38,7 @@ func Replace(str string) (ret string) {
 	ret = strings.ReplaceAll(ret, `$(OS)`, OS)
 	ret = strings.ReplaceAll(ret, `$(ARCH)`, Arch)
 	ret = strings.ReplaceAll(ret, `$(USER)`, Username)
+	ret = strings.ReplaceAll(ret, `$(HOME)`, Home)
 	ret = strings.ReplaceAll(ret, `$(EDIR)`, ExeDir)
 	return ret
 }
