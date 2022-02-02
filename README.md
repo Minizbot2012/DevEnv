@@ -12,6 +12,16 @@ current replacement funcs:
 
 $(PWD) -> replaces with the current working directory
 
+$(OS) -> runtime.GOOS
+
+$(ARCH) -> runtime.GOARCH
+
+$(USER) -> user.Current().Username
+
+$(HOME) -> user.Current().HomeDir
+
+$(EDIR) -> Exe's dir
+
 example configuration:
 ```json
 {
