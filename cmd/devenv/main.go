@@ -71,10 +71,10 @@ func main() {
 	//$PWD
 
 	for i, v := range environ.Environ {
-		environ.Environ[i].Value = strings.ReplaceAll(v.Value, `$(PWD)`, cwd)
+		environ.Environ[i].Value = replacements(v.Value)
 	}
 	for i, v := range environ.PathAppend {
-		environ.PathAppend[i] = strings.ReplaceAll(v, `$(PWD)`, cwd)
+		environ.PathAppend[i] = replacements(v)
 	}
 
 	//Initiate Terminal
