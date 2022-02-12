@@ -5,6 +5,7 @@ import (
 	"os"
 	"os/exec"
 	"path"
+	"path/filepath"
 
 	devenv "github.com/Minizbot2012/DevEnv"
 )
@@ -20,14 +21,14 @@ func main() {
 	json.NewDecoder(jsf).Decode(&exetab)
 	if exe, ok := exetab[os.Args[0]]; ok {
 		exe = devenv.Replace(exe)
-		if path.IsAbs(exe) {
+		if filepath.IsAbs(exe) {
 			cmd = exec.Command(exe, os.Args[1:]...)
 		} else {
 			cmd = exec.Command(path.Join(devenv.ExeDir, exe), os.Args[1:]...)
 		}
 	} else if exe, ok := exetab[os.Args[1]]; ok {
 		exe = devenv.Replace(exe)
-		if path.IsAbs(exe) {
+		if filepath.IsAbs(exe) {
 			cmd = exec.Command(exe, os.Args[2:]...)
 		} else {
 			cmd = exec.Command(path.Join(devenv.ExeDir, exe), os.Args[2:]...)
