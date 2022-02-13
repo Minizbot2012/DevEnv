@@ -76,7 +76,9 @@ func main() {
 	cmd := exec.Command(term)
 	cmd.Env = []string{}
 	path := os.Getenv("PATH")
-
+	if path[len(path)-1] != ';' {
+		path = path + string(os.PathListSeparator)
+	}
 	//Path Appends
 	for _, v := range environ.PathAppend {
 		path = path + v + string(os.PathListSeparator)
