@@ -35,6 +35,7 @@ func main() {
 		}
 	}
 	if cmd != nil {
+		cmd.Dir = devenv.CWD
 		cmd.Stdout, _ = os.OpenFile(os.DevNull, os.O_WRONLY, 0755)
 		cmd.Stderr, _ = os.OpenFile(os.DevNull, os.O_WRONLY, 0755)
 		cmd.Start()
