@@ -32,6 +32,7 @@ func init() {
 //$(USER) -> user.Current().Username
 //$(HOME) -> user.Current().HomeDir
 //$(EDIR) -> Exe's dir
+//${NAME} -> Replace with Environment Variable of name
 func Replace(str string) (ret string) {
 	ret = str
 	ret = strings.ReplaceAll(ret, `$(PWD)`, CWD)
@@ -40,5 +41,6 @@ func Replace(str string) (ret string) {
 	ret = strings.ReplaceAll(ret, `$(USER)`, Username)
 	ret = strings.ReplaceAll(ret, `$(HOME)`, Home)
 	ret = strings.ReplaceAll(ret, `$(EDIR)`, ExeDir)
+	ret = os.ExpandEnv(ret)
 	return ret
 }
