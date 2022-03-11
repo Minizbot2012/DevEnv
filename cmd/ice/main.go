@@ -47,7 +47,9 @@ func main() {
 		environ.Passthrough = append(environ.Passthrough,
 			"PROCESSOR_ARCHITECTURE", "PROCESSOR_IDENTIFIER",
 			"NUMBER_OF_PROCESSORS", "PSModulePath", "PATHEXT",
-			"OS", "WINDIR", "COMSPEC", "HOMEPATH", "USERPROFILE")
+			"OS", "WINDIR", "COMSPEC", "HOMEPATH", "USERPROFILE",
+			"APPDATA", "LOCALAPPDATA", "SystemRoot", "PROGRAMFILES",
+			"ProgramFiles(x86)")
 	} else if devenv.OS == "linux" {
 		environ.Passthrough = append(environ.Passthrough,
 			"DISPLAY", "WAYLAND_DISPLAY", "LANG", "HOME", "XDG_RUNTIME_DIR",
@@ -59,7 +61,9 @@ func main() {
 	//do our replacements
 	for i, v := range environ.Environ {
 		environ.Environ[i].Value = devenv.Replace(v.Value)
+		os.Setenv(v.Name, devenv.Replace(v.Value))
 	}
+	//expand out path
 	for i, v := range environ.PathAppend {
 		environ.PathAppend[i] = devenv.Replace(v)
 	}
@@ -73,7 +77,7 @@ func main() {
 	cmd := exec.Command(term)
 	cmd.Env = []string{}
 	path := os.Getenv("PATH")
-	if path[len(path)-1] != ';' {
+	if path[len(path)-1] != os.PathListSeparator {
 		path = path + string(os.PathListSeparator)
 	}
 	//Path Appends
